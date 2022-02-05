@@ -16,5 +16,6 @@ export const Container = styled.div`
     box-sizing: border-box;
     border-radius: 4px;
     margin-bottom: 16px;
+    width: 100%;
   }
 `;
