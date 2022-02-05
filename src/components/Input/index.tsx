@@ -1,14 +1,11 @@
 import { Container } from './styles';
+import { InputProps } from './interfaces';
 
-interface Props {
-  title: string;
-  placeholder: string;
-}
-export function Input(props: Props) {
+export function Input({ title, placeholder }: InputProps) {
   return (
     <Container>
-      <h4>{props.title}</h4>
-      <input type="text" placeholder={props.placeholder} />
+      <h4>{title}</h4>
+      <input type="text" placeholder={placeholder} />
     </Container>
   );
 }
