@@ -9,6 +9,13 @@ export function Form() {
   const [cpf, setCpf] = useState('');
   const [cep, setCep] = useState('');
 
+  const response = {
+    name,
+    dateOfBirth,
+    cpf,
+    cep,
+  };
+
   return (
     <Container>
       <div className="header">
@@ -30,21 +37,24 @@ export function Form() {
           placeholder="00/00/0000"
           value={dateOfBirth}
           onChange={(event: any) => setdateOfBirth(event.target.value)}
+          mask="99/99/9999"
         />
         <Input
           title="CPF"
           placeholder="000-000-000-00"
+          mask="999.999.999-99"
           value={cpf}
           onChange={(event: any) => setCpf(event.target.value)}
         />
         <Input
           title="CEP"
-          placeholder="00-000-000"
+          placeholder="00000-000"
+          mask="99999-999"
           value={cep}
           onChange={(event: any) => setCep(event.target.value)}
         />
         <div className="button-container">
-          <button>Enviar</button>
+          <button onClick={() => console.log(response)}>Enviar</button>
         </div>
       </div>
     </Container>

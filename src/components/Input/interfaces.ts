@@ -5,4 +5,5 @@ export interface InputProps {
   placeholder: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
+  mask?: any;
 }
