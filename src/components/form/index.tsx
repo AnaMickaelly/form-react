@@ -1,9 +1,14 @@
-import { Formik, Form as FormFormik } from 'formik';
+import { useState } from 'react';
 import { Container } from './styles';
 import LoginImage from '../../assets/Images/Login.svg';
 import { Input } from '../Input';
 
 export function Form() {
+  const [name, setName] = useState('');
+  const [dateOfBirth, setdateOfBirth] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [cep, setCep] = useState('');
+
   return (
     <Container>
       <div className="header">
@@ -13,39 +18,35 @@ export function Form() {
         </div>
         <img src={LoginImage} alt="Login" />
       </div>
-      <Formik
-        initialValues={{
-          name: '',
-          dateOfBirth: '',
-          cpf: '',
-          cep: '',
-        }}
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-      >
-        <div className="form-container">
-          <FormFormik>
-            <Input title="Nome" name="name" placeholder="nome" id="name" />
-            <Input
-              title="Data de nascimento"
-              placeholder="00/00/0000"
-              name="dateOfBirth"
-              id="dateOfBirth"
-            />
-            <Input
-              title="CPF"
-              name="cpf"
-              placeholder="000-000-000-00"
-              id="cpf"
-            />
-            <Input title="CEP" name="cep" placeholder="00-000-000" id="cep" />
-            <div className="button-container">
-              <button>Enviar</button>
-            </div>
-          </FormFormik>
+      <div className="form-container">
+        <Input
+          title="Nome"
+          placeholder="nome"
+          value={name}
+          onChange={(event: any) => setName(event.target.value)}
+        />
+        <Input
+          title="Data de nascimento"
+          placeholder="00/00/0000"
+          value={dateOfBirth}
+          onChange={(event: any) => setdateOfBirth(event.target.value)}
+        />
+        <Input
+          title="CPF"
+          placeholder="000-000-000-00"
+          value={cpf}
+          onChange={(event: any) => setCpf(event.target.value)}
+        />
+        <Input
+          title="CEP"
+          placeholder="00-000-000"
+          value={cep}
+          onChange={(event: any) => setCep(event.target.value)}
+        />
+        <div className="button-container">
+          <button>Enviar</button>
         </div>
-      </Formik>
+      </div>
     </Container>
   );
 }
