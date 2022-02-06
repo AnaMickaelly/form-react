@@ -18,11 +18,6 @@ export function Form() {
     setCookie(null, 'user', JSON.stringify(response));
   };
 
-  const a = async () => {
-    const response = await getAdressUser('65912340');
-    console.log(response);
-  };
-  a();
   return (
     <Container>
       <Header title="Welcome Back!" subtitle="Sign in to continue" />
