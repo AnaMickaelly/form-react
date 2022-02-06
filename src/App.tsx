@@ -1,8 +1,8 @@
-import { Home } from './pages/home';
+import { AppRoutes } from './Routes';
 import './styles/globalStyles.css';
 
 function App() {
-  return <Home />;
+  return <AppRoutes />;
 }
 
 export default App;

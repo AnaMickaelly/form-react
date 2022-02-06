@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { setCookie } from 'nookies';
 import { Container } from './styles';
-import LoginImage from '../../assets/Images/Login.svg';
+import { getAdressUser } from '../../service/getAdressUser';
 import { Input } from '../Input';
 import { formatterUserData } from './helper';
+import { Header } from '../header';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -13,19 +14,18 @@ export function Form() {
 
   const handlerSaveDataStorageCookies = () => {
     const response = formatterUserData({ name, dateOfBirth, cpf, cep });
-    localStorage.setItem('user', JSON.stringify(response));
+    localStorage.setItem('user', JSON.stringify(response, null, 2));
     setCookie(null, 'user', JSON.stringify(response));
   };
 
+  const a = async () => {
+    const response = await getAdressUser('65912340');
+    console.log(response);
+  };
+  a();
   return (
     <Container>
-      <div className="header">
-        <div className="text-header">
-          <h3>Welcome Back!</h3>
-          <p>Sign in to continue</p>
-        </div>
-        <img src={LoginImage} alt="Login" />
-      </div>
+      <Header title="Welcome Back!" subtitle="Sign in to continue" />
       <div className="form-container">
         <Input
           title="Nome"
