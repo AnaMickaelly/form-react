@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { setCookie } from 'nookies';
 import { useNavigate } from 'react-router-dom';
 import { Container } from './styles';
 import { Input } from '../Input';
 import { formatterUserData } from './helper';
 import { Header } from '../header';
-import Swal from 'sweetalert';
 import { Disclaimer } from '../disclaimer';
 
 export function Form() {
@@ -19,12 +17,11 @@ export function Form() {
   const handlerSaveDataStorageCookies = () => {
     const response = formatterUserData({ name, dateOfBirth, cpf, cep });
     localStorage.setItem('user', JSON.stringify(response, null, 2));
-    setCookie(null, 'user', JSON.stringify(response));
   };
 
   const submitDatas = () => {
     if (!name || !dateOfBirth || !cpf || !cep) {
-      Swal('Atenção', 'Preencha os dados corretamente!', 'error');
+      alert('Atenção! Preencha os dados corretamente!');
       return;
     }
     handlerSaveDataStorageCookies();
