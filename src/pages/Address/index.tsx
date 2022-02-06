@@ -17,6 +17,7 @@ export function Address() {
   const handlerFormatterObjectLocal = () => {
     const dataUser: any = localStorage.getItem('user');
     const result = JSON.parse(dataUser);
+
     return {
       cep: result.cep.replace(/[^\d]+/g, ''),
       name: result.name,

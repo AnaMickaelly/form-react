@@ -14,7 +14,8 @@
     "react-dom": "^17.0.2",
     "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.2.1",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^17.0.33",

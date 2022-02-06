@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { setCookie } from 'nookies';
+import { useNavigate } from 'react-router-dom';
 import { Container } from './styles';
-import { getAdressUser } from '../../service/getAdressUser';
 import { Input } from '../Input';
 import { formatterUserData } from './helper';
 import { Header } from '../header';
+import Swal from 'sweetalert';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -12,10 +13,21 @@ export function Form() {
   const [cpf, setCpf] = useState('');
   const [cep, setCep] = useState('');
 
+  const navigate = useNavigate();
+
   const handlerSaveDataStorageCookies = () => {
     const response = formatterUserData({ name, dateOfBirth, cpf, cep });
     localStorage.setItem('user', JSON.stringify(response, null, 2));
     setCookie(null, 'user', JSON.stringify(response));
+  };
+
+  const submitDatas = () => {
+    if (!name || !dateOfBirth || !cpf || !cep) {
+      Swal('Atenção', 'Preencha os dados corretamente!', 'error');
+      return;
+    }
+    handlerSaveDataStorageCookies();
+    navigate('/address');
   };
 
   return (
@@ -50,9 +62,7 @@ export function Form() {
           onChange={(event: any) => setCep(event.target.value)}
         />
         <div className="button-container">
-          <button onClick={() => handlerSaveDataStorageCookies()}>
-            Enviar
-          </button>
+          <button onClick={() => submitDatas()}>Enviar</button>
         </div>
       </div>
     </Container>
