@@ -3,8 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   .header {
     width: 100%;
-    max-width: 600px;
-    min-width: 600px;
+
     display: flex;
     justify-content: space-between;
     background-color: #9df0a3;

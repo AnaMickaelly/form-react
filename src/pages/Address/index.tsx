@@ -14,8 +14,19 @@ export function Address() {
     uf: '',
   });
 
+  const handlerFormatterObjectLocal = () => {
+    const dataUser: any = localStorage.getItem('user');
+    const result = JSON.parse(dataUser);
+    return {
+      cep: result.cep.replace(/[^\d]+/g, ''),
+      name: result.name,
+    };
+  };
+
+  const { cep, name } = handlerFormatterObjectLocal();
+
   const handlerInfos = async () => {
-    const response = await getAdressUser('65912340');
+    const response = await getAdressUser(cep);
     setData(response);
   };
 
@@ -23,10 +34,9 @@ export function Address() {
     handlerInfos();
   }, []);
 
-  console.log(data);
   return (
     <Container>
-      <Header title="Olá Ana! " subtitle="Aqui está o seu endereço" />
+      <Header title={`Olá ${name}! `} subtitle="Aqui está o seu endereço: " />
       <div>
         <ul>
           <li>CEP: {data.cep}</li>
