@@ -6,6 +6,7 @@ import { Input } from '../Input';
 import { formatterUserData } from './helper';
 import { Header } from '../header';
 import Swal from 'sweetalert';
+import { Disclaimer } from '../disclaimer';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -32,7 +33,10 @@ export function Form() {
 
   return (
     <Container>
-      <Header title="Welcome Back!" subtitle="Sign in to continue" />
+      <Header
+        title="Bem vindo de volta!"
+        subtitle="Faça login para continuar"
+      />
       <div className="form-container">
         <Input
           title="Nome"
@@ -63,6 +67,9 @@ export function Form() {
         />
         <div className="button-container">
           <button onClick={() => submitDatas()}>Enviar</button>
+        </div>
+        <div className="disclaimer">
+          <Disclaimer />
         </div>
       </div>
     </Container>

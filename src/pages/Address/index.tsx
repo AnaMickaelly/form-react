@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../../components/header';
 import { getAdressUser } from '../../service/getAdressUser';
 import { dataReturn } from './interfaces';
 import { Container } from './style';
+
+import back from '../../assets/Images/left-arrow.png';
+import { Disclaimer } from '../../components/disclaimer';
 
 export function Address() {
   const [data, setData] = useState<dataReturn>({
@@ -13,6 +17,7 @@ export function Address() {
     logradouro: '',
     uf: '',
   });
+  const navigate = useNavigate();
 
   const handlerFormatterObjectLocal = () => {
     const dataUser: any = localStorage.getItem('user');
@@ -37,16 +42,37 @@ export function Address() {
 
   return (
     <Container>
-      <Header title={`Olá ${name}! `} subtitle="Aqui está o seu endereço: " />
-      <div>
-        <ul>
-          <li>CEP: {data.cep}</li>
-          <li>Logradouro: {data.logradouro}</li>
-          {data.complemento && <li>Complemento: {data.complemento}</li>}
-          <li>Bairro: {data.bairro}</li>
-          <li>Cidade: {data.localidade}</li>
-          <li>Estado: {data.uf}</li>
-        </ul>
+      <div className="content">
+        <Header title={`Olá ${name}! `} subtitle="Aqui está o seu endereço: " />
+        <div className="wrapper">
+          <div className="list">
+            <div className="text-info">
+              <img onClick={() => navigate('/')} src={back} alt="Voltar" />
+              <h2>Suas informações: </h2>
+            </div>
+            <ul>
+              <span>CEP: </span>
+              <li>{data.cep}</li>
+              <span>Logradouro: </span>
+              <li>{data.logradouro}</li>
+              {data.complemento && (
+                <>
+                  <span>Complemento:</span>
+                  <li>{data.complemento}</li>
+                </>
+              )}
+              <span>Bairro: </span>
+              <li>{data.bairro}</li>
+              <span>Cidade: </span>
+              <li>{data.localidade}</li>
+              <span>Estado: </span>
+              <li>{data.uf}</li>
+            </ul>
+          </div>
+          <div className="disclaimer">
+            <Disclaimer />
+          </div>
+        </div>
       </div>
     </Container>
   );

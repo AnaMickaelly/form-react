@@ -26,5 +26,12 @@ export const Container = styled.div`
         border-radius: 4px;
       }
     }
+
+    .disclaimer {
+      margin-top: 24px;
+
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
