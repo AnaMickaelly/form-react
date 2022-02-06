@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { setCookie } from 'nookies';
 import { Container } from './styles';
 import LoginImage from '../../assets/Images/Login.svg';
 import { Input } from '../Input';
+import { formatterUserData } from './helper';
 
 export function Form() {
   const [name, setName] = useState('');
@@ -9,11 +11,10 @@ export function Form() {
   const [cpf, setCpf] = useState('');
   const [cep, setCep] = useState('');
 
-  const response = {
-    name,
-    dateOfBirth,
-    cpf,
-    cep,
+  const handlerSaveDataStorageCookies = () => {
+    const response = formatterUserData({ name, dateOfBirth, cpf, cep });
+    localStorage.setItem('user', JSON.stringify(response));
+    setCookie(null, 'user', JSON.stringify(response));
   };
 
   return (
@@ -28,7 +29,7 @@ export function Form() {
       <div className="form-container">
         <Input
           title="Nome"
-          placeholder="nome"
+          placeholder="Nome"
           value={name}
           onChange={(event: any) => setName(event.target.value)}
         />
@@ -41,7 +42,7 @@ export function Form() {
         />
         <Input
           title="CPF"
-          placeholder="000-000-000-00"
+          placeholder="000.000.000-00"
           mask="999.999.999-99"
           value={cpf}
           onChange={(event: any) => setCpf(event.target.value)}
@@ -54,7 +55,9 @@ export function Form() {
           onChange={(event: any) => setCep(event.target.value)}
         />
         <div className="button-container">
-          <button onClick={() => console.log(response)}>Enviar</button>
+          <button onClick={() => handlerSaveDataStorageCookies()}>
+            Enviar
+          </button>
         </div>
       </div>
     </Container>

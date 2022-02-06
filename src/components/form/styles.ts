@@ -10,6 +10,8 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     background-color: #9df0a3;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 
     .text-header {
       display: flex;
@@ -33,6 +35,8 @@ export const Container = styled.div`
   .form-container {
     background-color: #fff;
     padding: 28px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
     .button-container {
       button {
         color: #fff;
