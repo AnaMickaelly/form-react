@@ -12,12 +12,11 @@
 
 ### Deploy and how to access the application
 
-* [Here](https://form-react-test.vercel.app/)
+- [Here](https://form-react-test.vercel.app/)
 
-<img width="500" src=".github/img0.png" />
-<img width="500" src=".github/img1.png" />
-<img width="500" src=".github/img2.png" />
-<img width="500" src=".github/img3.png" />
+<img width="500" src=".github/image1.png" />
+<img width="500" src=".github/image2.png" />
+<img width="500" src=".github/image3.png" />
 
 ### 🛠 Technology
 
